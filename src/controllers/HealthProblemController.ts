@@ -1,0 +1,3 @@
+class HealthProblemController {}
+
+export { HealthProblemController };
