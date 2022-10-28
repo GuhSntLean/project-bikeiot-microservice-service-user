@@ -14,15 +14,15 @@ export class HealthProblem1666836094941 implements MigrationInterface {
                 },
                 {
                   name: 'medicine_allergy',
-                  type: 'string',
+                  type: 'varchar',
                 },
                 {
                   name: 'health problems',
-                  type: 'string',
+                  type: 'varchar',
                 },
                 {
                   name:'food_allergy',
-                  type: 'string',
+                  type: 'varchar',
                 }
               ],
               foreignKeys: [

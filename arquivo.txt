@@ -1,0 +1,4 @@
+    "migration:generate": "typeorm-ts-node-commonjs -d ./src/config/AppDataSource.ts migration:generate",
+    "migration:run": "typeorm-ts-node-commonjs -d ./src/config/AppDataBase.ts migration:run",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
+    "typeorm-migration": "yarn exec -- ts-node node_modules/typeorm/cli migration:revert -d ./src/config/AppDataBase.ts"

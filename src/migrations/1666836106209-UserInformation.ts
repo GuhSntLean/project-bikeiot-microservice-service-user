@@ -14,19 +14,19 @@ export class UserInformation1666836106209 implements MigrationInterface {
                 },
                 {
                   name: 'first_name',
-                  type: 'string',
+                  type: 'varchar',
                 },
                 {
                   name: 'last_name',
-                  type: 'string',
+                  type: 'varchar',
                 },
                 {
                   name: 'cell-phone',
-                  type: 'string' ,
+                  type: 'varchar' ,
                 },
                 {
                   name: 'phone',
-                  type: 'string',
+                  type: 'varchar',
                 },
                 {
                   name: 'born_date',
