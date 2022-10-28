@@ -29,6 +29,10 @@ export class UserInformation1666836106209 implements MigrationInterface {
                   type: 'string',
                 },
                 {
+                  name: 'born_date',
+                  type: 'date',
+                },
+                {
                   name: 'credential_id',
                   type: 'uuid',
                 }
