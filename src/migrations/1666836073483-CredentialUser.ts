@@ -5,7 +5,23 @@ export class CredentialUser1666836073483 implements MigrationInterface {
     await queryRunner.createTable(
       new Table({
         name: "credential_user",
-        columns: [],
+        columns: [
+          {
+            name: "id",
+            type: "uuid",
+            isPrimary: true,
+          },
+          {
+            name: "user_name",
+            type: "varchar",
+            isUnique: true,
+          },
+          {
+            name: "email",
+            type: "varchar",
+            isUnique: true,
+          }
+        ],
       })
     );
   }
