@@ -23,6 +23,10 @@ export class HealthProblem1666836094941 implements MigrationInterface {
                 {
                   name:'food_allergy',
                   type: 'varchar',
+                },
+                {
+                  name: 'credential_id',
+                  type: 'uuid',
                 }
               ],
               foreignKeys: [
