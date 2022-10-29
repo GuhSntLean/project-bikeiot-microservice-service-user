@@ -1,0 +1,3 @@
+class UserInformationUseCase {}
+
+export { UserInformationUseCase };

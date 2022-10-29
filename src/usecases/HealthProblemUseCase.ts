@@ -1,0 +1,3 @@
+class HealthProblemUseCase {}
+
+export { HealthProblemUseCase };
