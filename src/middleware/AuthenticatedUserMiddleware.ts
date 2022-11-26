@@ -14,7 +14,7 @@ class AuthenticatedUserMiddleware {
         message: "Token is missiong",
       });
     }
-
+    // Bearer TOKEN
     const [, token] = authToken.split(" ");
     try{
         verify(token, "79123427-290f-4c63-aca3-120ea5364159");
@@ -23,7 +23,7 @@ class AuthenticatedUserMiddleware {
             message: "Invalid token"
         });
     }
-
+    next();
   }
 }
 

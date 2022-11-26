@@ -1,6 +1,7 @@
 import express from "express";
 import http from "http";
 import routes from "../routes/routers";
+import { UserUseCase } from "../usecases/UserUseCase";
 import { RabbitMQServer } from "./RabbitMQServer";
 
 const app = express();
@@ -18,9 +19,11 @@ app.use(routes);
 const serveramqp = async () => {
   const server = new RabbitMQServer();
   await server.start();
-  await server.consume("micro.common.user", (message) =>
-    console.log(message.content.toString())
-  );
+  await server.consume("micro.common.user", (message) => {
+    const infoUser = message.content.toString();
+    const userCase = new UserUseCase();
+    userCase.execute(infoUser);
+  });
 };
 
 serveramqp();
