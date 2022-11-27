@@ -1,13 +1,75 @@
 import { Request, Response } from "express";
+import { HealthProblemUseCase } from "../usecases/HealthProblemUseCase";
+
 
 class HealthProblemController {
-  async create(request: Request, response: Response) {}
+  async create(request: Request, response: Response) {
+    const { id, firstname, lastname, borndate, cellphone, phone } =
+      request.body;
 
-  async update(request: Request, reponse: Response) {}
+    if (!id || !firstname || !lastname || !borndate || !cellphone || !phone) {
+      return response.status(500).json({ error: "Field is missing" });
+    }
 
-  async show(request: Request, reponse: Response) {}
+    const userInformationUseCase = new HealthProblemUseCase();
+    const result = await userInformationUseCase.save(
 
-  async list(request: Request, reponse: Response) {}
+    );
+
+    if (result instanceof Error) {
+      return response.status(500).json({ error: result.message });
+    }
+
+    return response.status(201).json(result);
+  }
+
+  async update(request: Request, response: Response) {
+    const { id, firstname, lastname, borndate, cellphone, phone } =
+      request.body;
+
+    if (!id || !firstname || !lastname || !borndate || !cellphone || !phone) {
+      return response.status(500).json({ error: "Field is missing" });
+    }
+
+    const userInformationUseCase = new HealthProblemUseCase();
+    const result = await userInformationUseCase.update(
+
+    );
+
+    if (result instanceof Error) {
+      return response.status(500).json({ error: result.message });
+    }
+
+    return response.status(201).json(result);
+  }
+
+  async show(request: Request, response: Response) {
+    const { id } = request.body;
+
+    if (!id) {
+      return response.status(500).json({ error: "Field is missing" });
+    }
+
+    const userInformationUseCase = new HealthProblemUseCase();
+    const result = await userInformationUseCase.show(id);
+
+    if (result instanceof Error) {
+      return response.status(500).json({ error: result.message });
+    }
+
+    return response.status(201).json(result);
+  }
+
+  async list(request: Request, response: Response) {
+    const userInformationUseCase = new HealthProblemUseCase();
+    const result = await userInformationUseCase.list();
+
+    if (result instanceof Error) {
+      return response.status(500).json({ error: result.message });
+    }
+
+    return response.status(201).json(result);
+  }
 }
 
 export { HealthProblemController };

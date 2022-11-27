@@ -110,19 +110,18 @@ class UserInformationUseCase {
 
   async list() {
     try {
-        const userExist = await UserInformationRepository.find();
-  
-        if (!userExist) {
-          return new Error("Informations not found");
-        }
-  
-        return userExist;
-      } catch (error) {
-        console.log(error);
+      const userExist = await UserInformationRepository.find();
+
+      if (!userExist) {
         return new Error("Informations not found");
       }
+
+      return userExist;
+    } catch (error) {
+      console.log(error);
+      return new Error("Informations not found");
+    }
   }
-  
 }
 
 export { UserInformationUseCase };
