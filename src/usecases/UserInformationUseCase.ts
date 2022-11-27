@@ -64,36 +64,65 @@ class UserInformationUseCase {
     }
 
     try {
-        try {
-            const result = await CredentialUserRepository.createQueryBuilder()
-              .update(UserInformation)
-              .set({
-               firstName: firstname || userExist.firstName,
-               lastName: lastname || userExist.lastName,
-               dateBorn: borndate || userExist.dateBorn,
-               cellPhone: cellphone || userExist.cellPhone,
-               phone: phone || userExist.phone
-              })
-              .where("credential_id = :credentialId", { credentialId: idUser })
-              .execute();
+      const result = await CredentialUserRepository.createQueryBuilder()
+        .update(UserInformation)
+        .set({
+          firstName: firstname || userExist.firstName,
+          lastName: lastname || userExist.lastName,
+          dateBorn: borndate || userExist.dateBorn,
+          cellPhone: cellphone || userExist.cellPhone,
+          phone: phone || userExist.phone,
+        })
+        .where("credential_id = :credentialId", { credentialId: idUser })
+        .execute();
 
-              if (result.affected != 1) {
-                return new Error("Error when updating");
-              }
+      if (result.affected != 1) {
+        return new Error("Error when updating");
+      }
 
-              const returnUserInformarion = await UserInformationRepository.findOne({
-                where: { credentialId: { id: idUser } },
-              });
-    
-            return returnUserInformarion
-          } catch (error) {
-            console.log(error);
-            return new Error("Error when updating");
-          }
+      const returnUserInformarion = await UserInformationRepository.findOne({
+        where: { credentialId: { id: idUser } },
+      });
+
+      return returnUserInformarion;
     } catch (error) {
-      return new Error("User does not exist in the database");
+      console.log(error);
+      return new Error("Error when updating");
     }
   }
+
+  async show(id: string) {
+    try {
+      const userExist = await UserInformationRepository.findOne({
+        where: { credentialId: { id: id } },
+      });
+
+      if (!userExist) {
+        return new Error("User not found");
+      }
+
+      return userExist;
+    } catch (error) {
+      console.log(error);
+      return new Error("User not found");
+    }
+  }
+
+  async list() {
+    try {
+        const userExist = await UserInformationRepository.find();
+  
+        if (!userExist) {
+          return new Error("Informations not found");
+        }
+  
+        return userExist;
+      } catch (error) {
+        console.log(error);
+        return new Error("Informations not found");
+      }
+  }
+  
 }
 
 export { UserInformationUseCase };

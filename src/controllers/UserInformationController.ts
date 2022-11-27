@@ -52,9 +52,33 @@ class UserInformationController {
     return response.status(201).json(result);
   }
 
-  async show(request: Request, response: Response) {}
+  async show(request: Request, response: Response) {
+    const { id } = request.body;
 
-  async list(request: Request, response: Response) {}
+    if (!id) {
+      return response.status(500).json({ error: "Field is missing" });
+    }
+
+    const userInformationUseCase = new UserInformationUseCase();
+    const result = await userInformationUseCase.show(id);
+
+    if (result instanceof Error) {
+      return response.status(500).json({ error: result.message });
+    }
+
+    return response.status(201).json(result);
+  }
+
+  async list(request: Request, response: Response) {
+    const userInformationUseCase = new UserInformationUseCase();
+    const result = await userInformationUseCase.list();
+
+    if (result instanceof Error) {
+      return response.status(500).json({ error: result.message });
+    }
+
+    return response.status(201).json(result);
+  }
 }
 
 export { UserInformationController };

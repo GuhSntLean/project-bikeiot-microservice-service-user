@@ -37,6 +37,21 @@ class UserUseCase {
       }
     }
   }
+
+  async list() {
+    try {
+      const userExist = await CredentialUserRepository.find();
+
+      if (!userExist) {
+        return new Error("Informations not found");
+      }
+
+      return userExist;
+    } catch (error) {
+      console.log(error);
+      return new Error("Informations not found");
+    }
+  }
 }
 
 export { UserUseCase };
