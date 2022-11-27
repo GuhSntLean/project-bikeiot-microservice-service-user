@@ -7,7 +7,7 @@ class HealthProblemController {
 
   async show(request: Request, reponse: Response) {}
 
-  async list(request: Request, reponse: Response){}
+  async list(request: Request, reponse: Response) {}
 }
 
 export { HealthProblemController };

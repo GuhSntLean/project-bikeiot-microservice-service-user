@@ -13,16 +13,16 @@ class UserInformation {
   @Column({ name: "last_name", type: "text" })
   lastName: string;
 
-  @Column({ name: "cell-phone", type: "text" })
+  @Column({ name: "cell_phone", type: "text" })
   cellPhone: string;
 
   @Column({ name: "phone", type: "text" })
   phone: string;
 
-  @Column({ name: "born_date", type: "timestamp" })
+  @Column({ name: "born_date", type: "date" })
   dateBorn: Date;
 
-  @OneToOne(() => CredentialUser)
+  @OneToOne(() => CredentialUser, (credentialUser) => credentialUser.id)
   @JoinColumn({ name: "credential_id" })
   credentialId: CredentialUser;
 

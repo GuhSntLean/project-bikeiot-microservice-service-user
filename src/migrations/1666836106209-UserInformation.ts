@@ -21,16 +21,18 @@ export class UserInformation1666836106209 implements MigrationInterface {
                   type: 'varchar',
                 },
                 {
-                  name: 'cell-phone',
+                  name: 'cell_phone',
                   type: 'varchar' ,
                 },
                 {
                   name: 'phone',
                   type: 'varchar',
+                  isNullable: true
                 },
                 {
                   name: 'born_date',
                   type: 'date',
+                  isNullable: true
                 },
                 {
                   name: 'credential_id',
