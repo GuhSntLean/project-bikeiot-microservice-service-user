@@ -30,6 +30,7 @@ class UserInformationUseCase {
 
     try {
       const birthday = moment(borndate).format("YYYY-MM-DD");
+      
       const newInformationUser = UserInformationRepository.create({
         firstName: firstname,
         lastName: lastname,

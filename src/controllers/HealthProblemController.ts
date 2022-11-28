@@ -4,16 +4,16 @@ import { HealthProblemUseCase } from "../usecases/HealthProblemUseCase";
 
 class HealthProblemController {
   async create(request: Request, response: Response) {
-    const { id, firstname, lastname, borndate, cellphone, phone } =
+    const { id, medicineallergy, healthproblems, foodallergy } =
       request.body;
 
-    if (!id || !firstname || !lastname || !borndate || !cellphone || !phone) {
+    if (!id || !medicineallergy || !healthproblems || !foodallergy ) {
       return response.status(500).json({ error: "Field is missing" });
     }
 
     const userInformationUseCase = new HealthProblemUseCase();
     const result = await userInformationUseCase.save(
-
+      id, medicineallergy, healthproblems, foodallergy
     );
 
     if (result instanceof Error) {
@@ -24,16 +24,16 @@ class HealthProblemController {
   }
 
   async update(request: Request, response: Response) {
-    const { id, firstname, lastname, borndate, cellphone, phone } =
+    const { id, medicineallergy, healthproblems, foodallergy } =
       request.body;
 
-    if (!id || !firstname || !lastname || !borndate || !cellphone || !phone) {
+    if (!id || !medicineallergy || !healthproblems || !foodallergy) {
       return response.status(500).json({ error: "Field is missing" });
     }
 
     const userInformationUseCase = new HealthProblemUseCase();
     const result = await userInformationUseCase.update(
-
+      id, medicineallergy, healthproblems, foodallergy
     );
 
     if (result instanceof Error) {
