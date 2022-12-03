@@ -19,7 +19,7 @@ app.use(routes);
 const serveramqp = async () => {
   const server = new RabbitMQServer();
   await server.start();
-  await server.consume("micro.common.user", (message) => {
+  await server.consume("information.user", (message) => {
     const infoUser = message.content.toString();
     const userCase = new UserUseCase();
     userCase.execute(infoUser);

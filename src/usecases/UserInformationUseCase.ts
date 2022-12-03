@@ -123,6 +123,7 @@ class UserInformationUseCase {
       return new Error("Informations not found");
     }
   }
+  
 }
 
 export { UserInformationUseCase };

@@ -31,25 +31,12 @@ class UserUseCase {
           email: user.email,
         });
 
-        await CredentialUserRepository.save(newUser);
+        const result = await CredentialUserRepository.save(newUser);
+
+        console.log(result);
       } catch (error) {
         console.log(error);
       }
-    }
-  }
-
-  async list() {
-    try {
-      const userExist = await CredentialUserRepository.find();
-
-      if (!userExist) {
-        return new Error("Informations not found");
-      }
-
-      return userExist;
-    } catch (error) {
-      console.log(error);
-      return new Error("Informations not found");
     }
   }
 }
