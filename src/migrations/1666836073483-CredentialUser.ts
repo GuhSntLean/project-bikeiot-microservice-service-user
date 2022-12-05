@@ -14,13 +14,13 @@ export class CredentialUser1666836073483 implements MigrationInterface {
           {
             name: "user_name",
             type: "varchar",
-            isUnique: true,
+            isUnique: false,
           },
           {
             name: "email",
             type: "varchar",
-            isUnique: true,
-          }
+            isUnique: false,
+          },
         ],
       })
     );

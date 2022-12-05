@@ -6,10 +6,10 @@ class CredentialUser {
   @PrimaryColumn()
   id: string;
 
-  @Column({ name: "user_name", type: "text", unique: true })
+  @Column({ name: "user_name", type: "text" })
   userName: string;
 
-  @Column({ name: "email", type: "text", unique: true })
+  @Column({ name: "email", type: "text" })
   email: string;
 
   constructor() {
