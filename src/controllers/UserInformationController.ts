@@ -7,7 +7,7 @@ class UserInformationController {
       request.body;
 
     if (!id || !firstname || !lastname || !borndate || !cellphone || !phone) {
-      return response.status(500).json({ error: "Field is missing" });
+      return response.status(400).json({ error: "Field is missing" });
     }
 
     const userInformationUseCase = new UserInformationUseCase();
@@ -21,7 +21,7 @@ class UserInformationController {
     );
 
     if (result instanceof Error) {
-      return response.status(500).json({ error: result.message });
+      return response.status(400).json({ error: result.message });
     }
 
     return response.status(201).json(result);
@@ -32,7 +32,7 @@ class UserInformationController {
       request.body;
 
     if (!id || !firstname || !lastname || !borndate || !cellphone || !phone) {
-      return response.status(500).json({ error: "Field is missing" });
+      return response.status(400).json({ error: "Field is missing" });
     }
 
     const userInformationUseCase = new UserInformationUseCase();
@@ -46,7 +46,7 @@ class UserInformationController {
     );
 
     if (result instanceof Error) {
-      return response.status(500).json({ error: result.message });
+      return response.status(400).json({ error: result.message });
     }
 
     return response.status(201).json(result);
@@ -56,14 +56,14 @@ class UserInformationController {
     const { id } = request.body;
 
     if (!id) {
-      return response.status(500).json({ error: "Field is missing" });
+      return response.status(400).json({ error: "Field is missing" });
     }
 
     const userInformationUseCase = new UserInformationUseCase();
     const result = await userInformationUseCase.show(id);
 
     if (result instanceof Error) {
-      return response.status(500).json({ error: result.message });
+      return response.status(400).json({ error: result.message });
     }
 
     return response.status(201).json(result);
@@ -74,7 +74,7 @@ class UserInformationController {
     const result = await userInformationUseCase.list();
 
     if (result instanceof Error) {
-      return response.status(500).json({ error: result.message });
+      return response.status(400).json({ error: result.message });
     }
 
     return response.status(201).json(result);
